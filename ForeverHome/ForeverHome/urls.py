@@ -22,5 +22,7 @@ from profile_app import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('profile_app.urls'))
+    path('', include('profile_app.urls')),
+    path('', include('pet_post_app.urls')),
+
 ]

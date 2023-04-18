@@ -21,7 +21,7 @@ class MyAccountManager(BaseUserManager):
         return user
 
 def get_profile_image_filepath(self, filename):
-    return f'profile_pictures/{self.pk}/{"profile_picture.png"}'
+    return f'static/profile_app/profile_pictures/{self.pk}/{"profile_picture.png"}'
 
 LOCATION_CHOICES = [
         ("FARGO", "Fargo"),
