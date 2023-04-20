@@ -44,7 +44,7 @@ class Profile(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     first_name = models.CharField(max_length=50, blank=True)
     password = models.CharField(max_length=500)
-    profile_picture = models.ImageField(max_length=255, upload_to=get_profile_image_filepath, null=True, blank=True, default="")
+    profile_picture = models.ImageField(max_length=255, upload_to=get_profile_image_filepath, null=True, blank=True, default="static/profile_app/default_pfp.png")
     location = models.CharField(max_length=30, choices=LOCATION_CHOICES, default="FARGO")
     liked_posts = models.ManyToManyField('pet_post_app.Post', blank=True)
 
