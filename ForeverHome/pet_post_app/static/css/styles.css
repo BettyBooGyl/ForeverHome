@@ -44,3 +44,17 @@
 .card-img-top {
   height: 320px;
 }
+
+#message-icon {
+  position: relative;
+  padding: 15px 40px;
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 75%,
+    75% 75%,
+    75% 100%,
+    50% 75%,
+    0% 75%
+  );
+}
