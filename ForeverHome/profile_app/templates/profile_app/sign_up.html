@@ -1,45 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
-</head>
-
-<body>
     {% extends 'base_page.html' %}
     {% load static %}
+
+    
+    {% block title %}Sign up{% endblock %}
+    
+    {% block css %}<link rel="stylesheet" href="{% static 'profile_app/css/forms.css'%}">{% endblock %}
+
+
     {% block content %}
-
-
-    <style type="text/css">
-        .card{
-            background-color: #d6d4d4;
-        }
-        .card-signin {
-            width: 100%;
-            max-width: 400px;
-            padding: 15px;
-            margin: auto;
-        }
-        .form-signin input {
-            border-radius: 10px 10px 10px 10px ;
-            margin-bottom: 10px;
-          
-        }
-        .btn-primary {
-            background-color: #DB8330;
-            border-color:#a86d35;
-        }
-        .btn-primary:hover {
-            background-color: #362A21;
-            border-color:#362A21;
-        }
-      
-      </style>
-      
 
 
     <div class="container-fluid">
