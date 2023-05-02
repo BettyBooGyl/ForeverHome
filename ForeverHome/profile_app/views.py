@@ -29,7 +29,6 @@ def sign_up(request, *args, **kwargs):
 
     if request.POST:
         form = RegistrationForm(request.POST)
-        print(form)
         if form.is_valid():
             form.save()
             email = form.cleaned_data.get('email').lower()
@@ -65,7 +64,6 @@ def sign_in(request, *args, **kwargs):
     if request.POST:
         form = AccountAuthenticationForm(request.POST)
         print("Got Request!")
-        print(form)
 
         if form.is_valid():
             print("Form is valid")

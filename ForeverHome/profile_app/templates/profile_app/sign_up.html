@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
-</head>
-
-<body>
     {% extends 'base_page.html' %}
     {% load static %}
+
+    
+    {% block title %}Sign up{% endblock %}
+    
+    {% block css %}<link rel="stylesheet" href="{% static 'profile_app/css/forms.css'%}">{% endblock %}
+
+
     {% block content %}
 
 
