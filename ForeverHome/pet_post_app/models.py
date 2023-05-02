@@ -13,10 +13,12 @@ SIZE_CHOICES = [
     ("MD", "Medium"),
     ("LG", "Large"),
 ]
+def get_profile_image_filepath(self, filename):
+    return f'static/pet_post_app/post_pictures/{self.pk}/{"pet_picture.png"}'
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
-    picture_of_dog = models.ImageField(upload_to="pet_post_app/post_pictures", default="")
+    picture_of_dog = models.ImageField(upload_to=get_profile_image_filepath, default="default_pfp.png")
     name = models.CharField(max_length=50)
     breed = models.CharField(max_length=50)
     age = models.IntegerField()
