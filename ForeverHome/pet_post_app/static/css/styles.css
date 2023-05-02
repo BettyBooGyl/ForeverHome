@@ -7,38 +7,28 @@
   box-shadow: 0px 0px 10px 2px rgba(219, 131, 48, 0.8);
 }
 
-/* .card-text {
-  text-align: center;
-} */
-/* .card-text {
-  text-align: center;
-} */
-
 #heart {
   position: relative;
-  width: 100px;
-  height: 90px;
-  margin-top: 10px;
+  width: 50px;
+  height: 60px;
+  margin-bottom: 10px;
 }
 
-#heart::before,
-#heart::after {
-  content: "";
+#heart:before,
+#heart:after {
   position: absolute;
-  top: 0;
-  width: 52px;
-  height: 80px;
-  border-radius: 50px 50px 0 0;
-  background: rgb(219, 131, 48);
-}
-
-#heart::before {
+  content: "";
   left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: rgb(219, 131, 48);
+  border-radius: 50px 50px 0 0;
   transform: rotate(-45deg);
   transform-origin: 0 100%;
 }
 
-#heart::after {
+#heart:after {
   left: 0;
   transform: rotate(45deg);
   transform-origin: 100% 100%;
@@ -51,6 +41,9 @@
 #message-icon {
   position: relative;
   padding: 15px 40px;
+  background: #8e71a6;
+  margin-left: 110px;
+  height: 60px;
   clip-path: polygon(
     0% 0%,
     100% 0%,
@@ -60,4 +53,8 @@
     50% 75%,
     0% 75%
   );
+}
+
+a {
+  display: inline-block;
 }
