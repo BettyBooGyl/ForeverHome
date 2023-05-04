@@ -64,3 +64,5 @@ class Profile(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
+    def test(self,int):
+        return 65
