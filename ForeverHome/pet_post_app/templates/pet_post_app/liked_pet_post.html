@@ -11,7 +11,7 @@
   </head>
   <body>
     <h1>Liked Posts Page</h1>
-    {%if liked_posts%} {%for post in liked_posts %}
+    {%for post in request.user.liked_posts.all %}
     <div class="container container-fluid">
       <div class="card-columns">
         <div class="card" style="width: 20rem">
@@ -28,18 +28,22 @@
           </div>
           <div class="card-footer">
             <a href="#">
-              <div id="heart"></div>
+              <div id="heart"><img src="{% static 'heart-filled.png'%}" height="30" ></div>
             </a>
-            <a href="#">
-              <div id="message-icon"></div>
-            </a>
+            {% if post.profile_that_posted_pet.userID > request.user.userID %}
+                <td><a  href="{% url 'messages' id1=post.profile_that_posted_pet.userID  id2=request.user.userID%}"><div id="message-icon"></div>
+                </a></td>
+            {% else %}
+               <td><a  href="{% url 'messages' id1=request.user.userID id2=post.profile_that_posted_pet.userID %}"><div id="message-icon"></div>
+                
+              </a></td>
+            {% endif %}
+            
           </div>
         </div>
       </div>
     </div>
-
-    {%endfor%} {%else%}
-    <p>You have no liked posts!</p>
-    {%endif%} {% endblock content %}
+    {%endfor%} 
+    {% endblock content %}
   </body>
 </html>
