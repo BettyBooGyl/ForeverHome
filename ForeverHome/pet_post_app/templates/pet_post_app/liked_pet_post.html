@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%extends 'base_page.html'%} {% block content %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <title>Liked</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h1>Liked Posts Page</h1>
+    {%if liked_posts%} {%for post in liked_posts %}
+    <div class="container container-fluid">
+      <div class="card-columns">
+        <div class="card" style="width: 20rem">
+          <img
+            src="{{post.picture_of_dog}}"
+            class="card-img-top"
+            alt="A picture of {{post.name}}."
+          />
+          <div class="card-body">
+            <h5 class="card-title"><u>{{post.name}}</u></h5>
+            <div>
+              <p class="card-text">{{post.description}}</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="#">
+              <div id="heart"></div>
+            </a>
+            <a href="#">
+              <div id="message-icon"></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {%endfor%} {%else%}
+    <p>You have no liked posts!</p>
+    {%endif%} {% endblock content %}
+  </body>
 </html>
