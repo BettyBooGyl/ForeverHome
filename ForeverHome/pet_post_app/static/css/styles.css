@@ -1,10 +1,21 @@
 .card {
+  align-self: center;
+  max-width: 340px;
   transition: border-color 1s, box-shadow 0.5s;
+  margin-top: 25px;
+  /* margin-right: 200px; */
+  margin-bottom: 75px;
+  /* margin-left: 200px; */
 }
 
 .card:hover {
   border-color: rgba(219, 131, 48, 1);
   box-shadow: 0px 0px 10px 2px rgba(219, 131, 48, 0.8);
+}
+
+.card-img-top {
+  max-width: 340px;
+  height: auto;
 }
 
 #heart {
@@ -35,7 +46,8 @@
 }
 
 .card-img-top {
-  height: 320px;
+  min-height: 300px;
+  max-height: 340px;
 }
 
 #message-icon {
@@ -57,4 +69,12 @@
 
 a {
   display: inline-block;
+}
+
+p {
+  max-height: 100px;
+  max-width: 340px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

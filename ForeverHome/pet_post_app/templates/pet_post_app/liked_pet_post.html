@@ -11,30 +11,26 @@
   </head>
   <body>
     <h1>Liked Posts Page</h1>
-
-    {% comment %} Need to make the card for each post that the account liked
-    {%endcomment %}
-    <div class="container">
-      <div class="card-deck" style="width: 22rem">
-        <div class="card border-dark">
+    {%if liked_posts%} {%for post in liked_posts %}
+    <div class="container container-fluid">
+      <div class="card-columns">
+        <div class="card" style="width: 20rem">
           <img
-            src="{%static 'css/images/KingPhilipPFP.jpeg'%}"
+            src="{{post.picture_of_dog}}"
             class="card-img-top"
-            alt="Cool avatar"
+            alt="A picture of {{post.name}}."
           />
           <div class="card-body">
-            <h5 class="card-title text-center"><u>Post Creator's Name</u></h5>
-            <p class="card-text text-center">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
-              doloribus consequuntur, rerum fugiat nesciunt amet tempora illum
-              ab doloremque, aut nemo officia dolores consectetur earum.
-            </p>
+            <h5 class="card-title"><u>{{post.name}}</u></h5>
+            <div>
+              <p class="card-text">{{post.description}}</p>
+            </div>
           </div>
           <div class="card-footer">
-            <a href="https://www.youtube.com/watch?v=TiC8pig6PGE">
+            <a href="#">
               <div id="heart"></div>
             </a>
-            <a href="https://www.youtube.com/watch?v=rdUu6E7MrCE">
+            <a href="#">
               <div id="message-icon"></div>
             </a>
           </div>
@@ -42,8 +38,8 @@
       </div>
     </div>
 
-    {% endblock content %}
-
-    <div></div>
+    {%endfor%} {%else%}
+    <p>You have no liked posts!</p>
+    {%endif%} {% endblock content %}
   </body>
 </html>
