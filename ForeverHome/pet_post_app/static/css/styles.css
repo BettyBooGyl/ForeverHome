@@ -1,4 +1,13 @@
+.card-footer {
+  background-color: #d6d4d4 !important;
+}
+
+.card-img-top {
+  border-radius: 15px;
+}
+
 .card {
+  background-color: #d6d4d4 !important;
   align-self: center;
   max-width: 340px;
   transition: border-color 1s, box-shadow 0.5s;
@@ -16,7 +25,13 @@
 .card-img-top {
   max-width: 340px;
   height: auto;
+  min-height: 300px;
+  max-height: 340px;
 }
+
+/* .card-body {
+  background-color: #d6d4d4 !important;
+} */
 
 /* #heart {
   position: relative;
@@ -45,12 +60,7 @@
   transform-origin: 100% 100%;
 } */
 
-.card-img-top {
-  min-height: 300px;
-  max-height: 340px;
-}
-
-#message-icon {
+/* #message-icon {
   position: relative;
   padding: 15px 40px;
   background: #8e71a6;
@@ -65,10 +75,25 @@
     50% 75%,
     0% 75%
   );
-}
-.heart{
+} */
+.heart {
   align-self: center;
 }
+
+.message-icon {
+  display: flex;
+  justify-content: center;
+}
+
+.post-link-image {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+h4 {
+  color: #db8330;
+}
+
 a {
   display: inline-block;
 }
