@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'profile_app/css/nav.css'%}" />
     {% block css %} {% endblock %}
     <link rel="stylesheet" href="{% static 'profile_app/css/styles.css'%}" />
@@ -15,71 +15,78 @@
       crossorigin="anonymous"
     />
     <title>{% block title %} {% endblock %}</title>
-</head>
-<body>        
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
-          <img
-            src="{% static 'profile_app/logo.png'%}"
-            height="55"
-            alt="FureverHome Logo"
-            loading="lazy"
-          />
-        </a>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <a class="navbar-brand mt-2 mt-lg-0" href="#">
+            <img
+              src="{% static 'profile_app/logo.png'%}"
+              height="55"
+              alt="FureverHome Logo"
+              loading="lazy"
+            />
+          </a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'search' %}">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'liked_posts' %}">Liked Posts</a>
+            </li>
+          </ul>
+        </div>
+        {% if request.user.is_authenticated %}
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {%if user.userID > request.user.userID %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
+            <a
+              class="nav-link"
+              href="{% url 'messages' id1=user.userID id2=request.user.userID%}"
+              >Messages</a
+            >
           </li>
+          {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'search' %}">Search</a>
+            <a
+              class="nav-link"
+              href="{% url 'messages' id1=request.user.userID id2=user.userID%}"
+              >Messages</a
+            >
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sign_out' %}"> Sign out</a>
+          </li>
+          <li>
+            <a href="{% url 'userprofile'%}"
+              ><img
+                src="{{request.user.profile_picture.url}}"
+                class="rounded-circle"
+                height="45"
+                alt="Profile Picture"
+                loading="lazy"
+            /></a>
           </li>
         </ul>
-      </div>
-        {% if request.user.is_authenticated %}
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              {%if    user.userID > request.user.userID %}
-                <li class="nav-item">
-                    <a class="nav-link"  href="{% url 'messages' id1=user.userID id2=request.user.userID%}">Messages</a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a class="nav-link"  href="{% url 'messages' id1=request.user.userID id2=user.userID%}">Messages</a>
-                </li>
-              {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'sign_out' %}"> Sign out</a>
-                </li>
-                <li>
-                    <a href="{% url 'userprofile'%}"><img
-                        src="{{request.user.profile_picture.url}}"
-                        class="rounded-circle"
-                        height="45"
-                        alt="Profile Picture"
-                        loading="lazy"/></a>
-                </li>
-                
-            </ul>
         {% else %}
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link"  href="{% url 'sign_in' %}">Sign in</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'sign_up' %}">Sign up</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sign_in' %}">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sign_up' %}">Sign up</a>
+          </li>
         </ul>
-      {% endif %}
-    </div>
-  </nav>
+        {% endif %}
+      </div>
+    </nav>
 
-
-    <div class="main">
-            {% block content %}
-
-            {% endblock content %}
-    </div>
+    <div class="main">{% block content %} {% endblock content %}</div>
     {% block javascript %}{% endblock %}
     <footer>
       <a href="{% url 'about_us' %}"> To the about us </a>
