@@ -17,89 +17,123 @@
     <title>{% block title %} {% endblock %}</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <a class="navbar-brand mt-2 mt-lg-0" href="#">
-            <img
-              src="{% static 'profile_app/logo.png'%}"
-              height="55"
-              alt="FureverHome Logo"
-              loading="lazy"
-            />
-          </a>
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'index' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'search' %}">Search</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'liked_posts' %}">Liked Posts</a>
-            </li>
-          </ul>
-        </div>
-        {% if request.user.is_authenticated %}
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {%if user.userID > request.user.userID %}
-          <li class="nav-item">
-            <div class="notification">
-              <a
-                class="nav-link"
-                id="notification-read"
-                href="{% url 'messages' id1=user.userID id2=request.user.userID %}"
-                >Messages</a
-              >
-              <p id="count_badge">1</p>
+    <div id="page-container">
+      <div id="content-wrap">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <a class="navbar-brand mt-2 mt-lg-0" href="#">
+                <img
+                  src="{% static 'profile_app/logo.png'%}"
+                  height="55"
+                  alt="FureverHome Logo"
+                  loading="lazy"
+                />
+              </a>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'search' %}">Search</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'liked_posts' %}">Liked Posts</a>
+                </li>
+              </ul>
             </div>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <div class="notification">
-              <a
-                class="nav-link"
-                id="notification-read"
-                href="{% url 'messages' id1=request.user.userID id2=user.userID%}"
-                >Messages</a
-              >
-              <p id="notification-read ">1</p>
-            </div>
-          </li>
-          {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'sign_out' %}"> Sign out</a>
-          </li>
-          <li>
-            <a href="{% url 'userprofile' userID=user.userID%}"
-              ><img
-                src="{{request.user.profile_picture.url}}"
-                class="rounded-circle"
-                height="45"
-                alt="Profile Picture"
-                loading="lazy"
-            /></a>
-          </li>
-        </ul>
-        {% else %}
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'sign_in' %}">Sign in</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'sign_up' %}">Sign up</a>
-          </li>
-        </ul>
-        {% endif %}
-      </div>
-    </nav>
+            {% if request.user.is_authenticated %}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {%if user.userID > request.user.userID %}
+              <li class="nav-item">
+                <div class="notification">
+                  <a
+                    class="nav-link"
+                    id="notification-read"
+                    href="{% url 'messages' id1=user.userID id2=request.user.userID %}"
+                    >Messages</a
+                  >
+                  <p id="count_badge">0</p>
+                </div>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <div class="notification">
+                  <a
+                    class="nav-link"
+                    id="notification-read"
+                    href="{% url 'messages' id1=request.user.userID id2=user.userID%}"
+                    >Messages</a
+                  >
+                  <p id="notification-read ">0</p>
+                </div>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'sign_out' %}"> Sign out</a>
+              </li>
+              <li>
+                <a href="{% url 'userprofile' userID=user.userID%}"
+                  ><img
+                    src="{{request.user.profile_picture.url}}"
+                    class="rounded-circle"
+                    height="45"
+                    alt="Profile Picture"
+                    loading="lazy"
+                /></a>
+              </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'sign_in' %}">Sign in</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'sign_up' %}">Sign up</a>
+              </li>
+            </ul>
+            {% endif %}
+          </div>
+        </nav>
 
-    <div class="main">{% block content %} {% endblock content %}</div>
-    {% block javascript %}{% endblock %}
-    <footer>
-      <a href="{% url 'about_us' %}"> To the about us </a>
-      <a href="{% url 'personalities' %}"> Personalities descriptions </a>
-    </footer>
+        <div class="main">{% block content %} {% endblock content %}</div>
+        {% block javascript %}{% endblock %}
+      </div>
+      <footer>
+        <div class="">
+          <a href="{% url 'about_us' %}"> To the about us </a>
+          <a href="{% url 'personalities' %}"> Personalities descriptions </a>
+        </div>
+      </footer>
+    </div>
+
+
+    <section class="">
+      <!-- Footer -->
+      <footer class="text-center text-white" id="footer" >
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: CTA -->
+          <section class="">
+            <p class="d-flex justify-content-center align-items-center">
+              <a href="{% url 'about_us' %}"> To the about us </a>
+              <a href="{% url 'personalities' %}"> Personalities descriptions </a>
+            </p>
+          </section>
+          <!-- Section: CTA -->
+        </div>
+        <!-- Grid container -->
+    
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2023 Copyright
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+    </section>
+
+
     <script>
       const notify_socket = new WebSocket(
         "ws://" + window.location.host + "/ws/" + "notify/"
