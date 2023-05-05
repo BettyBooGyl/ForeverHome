@@ -91,8 +91,6 @@ class Profile(AbstractBaseUser):
     profile_picture = models.ImageField(max_length=255, upload_to=get_profile_image_filepath, null=True, blank=True, default="static/profile_app/default_pfp.png")
     location = models.CharField(max_length=30, choices=LOCATION_CHOICES, default="FARGO")
     liked_posts = models.ManyToManyField('pet_post_app.Post', blank=True)
-    problems_and_disabilities = models.CharField(max_length=500)
-
 
     objects = MyAccountManager()
 
