@@ -1,20 +1,130 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <h1>Our Mission</h1>
-    <p>At Furever-Home, our mission is to help every pet find a loving 
-        and permanent home. We are committed to connecting pet lovers 
-        with their perfect furry companions by providing a reliable 
-        and user-friendly adoption platform. Our team is dedicated to 
-        promoting responsible pet ownership and animal welfare. Furever-Home is 
-        more than just a pet adoption website; it's a movement towards
-        creating a world where every pet has a happy and healthy home.</p>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    <h2>Terms of Service</h2>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Container for flexboxes */
+section {
+  display: -webkit-flex;
+  display: flex;
+}
+
+/* Style the navigation menu */
+nav {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background: #ccc;
+  padding: 20px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Style the content */
+article {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  background-color: #f1f1f1;
+  padding: 10px;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  section {
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+<body>
+
+
+
+<header>
+  <h2>About us</h2>
+</header>
+
+<article>     
+        <h1>Our Mission</h1>
+        <p>At Furever-Home, our mission is to help every pet find a loving 
+            and permanent home. We are committed to connecting pet lovers 
+            with their perfect furry companions by providing a reliable 
+            and user-friendly adoption platform. Our team is dedicated to 
+            promoting responsible pet ownership and animal welfare. Furever-Home is 
+            more than just a pet adoption website; it's a movement towards
+            creating a world where every pet has a happy and healthy home.</p>
+      </article>
+<section>
+  
+  
+  <article>
+    <h1>Betty Gylden</h1>
+    <p>Our head developer hails from the Czech Republic. With several years of programing experience, a TA position for CSCI 160, and an super-human work ethic, Ms. Gylden the fearless leader we turn to when thing get tough.</p>
+    <p>Back in prague, Betty has two dogs of her own Mushka and Boo. Both mutts adobted from from local shelters. Over the summer break she can often be found hiking the treacherous czech trails with her two canine companions.</p>
+  </article>
+ 
+
+  <article>
+        <h1>Ian King</h1>
+        <p>The "King" of Cool, Ian King is this teams Cheif Communications Officer. While a pround native of the "Lone Star State" of Texas, "Alone" is something he is not. As President of NDSU's ACM chapter, Ian can often be found organising events, discusing code, and creating comradery among fellow club members. This backround makes him the perfect person to build bridges between team members and proffesors alike.</p>
+        <p>As a life long lover of animals, Ian has spent many hours volenteering at his local animal shelter walking dogs.</p>
+      </article>
+
+      <article>
+        <h1>Emily Anderson</h1>
+        <p>Most Bussiness Majors would shy away from a Software Developement course, but not Emily Anderson. As a scolarship acheiving Oboist of the NDSU marching band and Orcastra. This Twin City trailblazer is the perfect combination of talent and disaplin. Making her the perfect CEO for FurEver-Home</p>
+        <p>Minniapolis or St Pual? Cat or Dogs? Why not both! Back in the big city Emily makes the best of both worlds with her cat /catName and her dog/dogName.</p>
+      </article>
+
+      <article>
+        <h1>Kylynn Erickson</h1>
+        <p>From the heart of her team members and North Dakota, Kylynn Erickson is FurEver-Home's Head of marketing. Having worked at several Doggy Daycares, her experincein the pet industry gives this team insight into a ever growing market</p>
+        <p>When she's not writing incredibly thoughtful and creative team member bio's on FurEver-Home's about us page. She is caring for her Boxer/ Bulldog mix Billy.</p>
+      </article>
+</section>
+
+<footer>
+  <p>Footer</p>
+</footer>
+
+</body>
+</html>
+
+
     <style>
         [data-custom-class='body'], [data-custom-class='body'] * {
                 background: transparent !important;
