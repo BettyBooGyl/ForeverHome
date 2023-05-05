@@ -1,12 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Pet</title>
-</head>
-<body>
-    
+{% extends 'base_page.html' %}
+{% load static %}
+
+{% block title %}Pet Detail{% endblock %}
+
+{% block css %}<link rel="stylesheet" href='{% static "css/style.css" %}'>{% endblock %}
+
+{% block content %}
+<!--still needs to be linked to object-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="card-body">
+            <div class="card">
+                <div class="d-flex flex-column pb-3 card-info">
+                    <div class="card-info">
+                        <h4 class="card-title">
+                            <center><b>{{post.name}}</b></a></center>
+                        </h4>
+                    <div>
+                    <img
+                      src="{{post.picture_of_dog}}"
+                      class="card-img-top"
+                      alt="A picture of {{post.name}}."
+                    />
+                    <div>
+                        <body>
+                            Age: {{post.Age}}
+                        </body>
+                    </div>
+                    <div>
+                        <body>
+                            Breed: {{post.breed}}
+                        </body>
+                    </div>
+                    <div>
+                        <body>
+                            Personality: {{post.Personality}}
+                        </body>
+                    </div>
+                    <div>
+                        <body>
+                            Size: {{post.size}}
+                        </body>
+                    </div>
+                    <div>
+                        <body>
+                            Description: {{post.description}}
+                        </body>
+                    </div>
+                    <div>
+                        {% if post.good_with_pets %}
+                        <body>
+                            Good with pets? Yes.
+                        </body>
+                        {% else $}
+                        <body>
+                            Good with pets? No.
+                        </body>
+                        {%endif%}
+                    </div>
+                    <div>
+                        {% if post.good_with_kids %}
+                        <body>
+                            Good with kids? Yes.
+                        </body>
+                        {%else$}
+                        <body>
+                            Good with kids? No.
+                        </body>
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
 </body>
+
 </html>
