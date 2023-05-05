@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
+from profile_app.models import Profile
 
 from profile_app.forms import RegistrationForm, AccountAuthenticationForm
 
@@ -17,8 +18,10 @@ def personalities(request):
     return render(request, 'profile_app/personalities.html')
 
 
-def profile(request):
-    return render(request, 'profile_app/userprofile.html')
+def profile(request, userID):
+    user = Profile.objects.get(pk=userID)
+    user_dict = {'user': user}
+    return render(request, 'profile_app/userprofile.html', context=user_dict)
 
 
 def sign_up(request, *args, **kwargs):
