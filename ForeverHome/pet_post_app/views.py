@@ -13,7 +13,6 @@ def create_new_post_page(request):
 
 
 def detail_pet_post(request, id):
-    post_list = Post(id)
     return render(request, 'pet_post_app/detail_pet_post.html', context={"id": id})
 
 
