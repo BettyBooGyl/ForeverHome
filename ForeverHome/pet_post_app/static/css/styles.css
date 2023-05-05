@@ -96,6 +96,7 @@ h4 {
 
 a {
   display: inline-block;
+  color: inherit;
 }
 
 p {
