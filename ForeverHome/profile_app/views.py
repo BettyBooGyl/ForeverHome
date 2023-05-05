@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from profile_app.models import Profile
-from pet_post_app.models import Post
 
 from profile_app.forms import RegistrationForm, AccountAuthenticationForm
 
