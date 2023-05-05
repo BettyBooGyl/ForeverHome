@@ -1,8 +1,15 @@
 from django.shortcuts import render
 from pet_post_app.models import Post
+<<<<<<< Updated upstream
+
+=======
+from django.http import JsonResponse,HttpResponse
+>>>>>>> Stashed changes
 
 
 def search(request):
+    post_list = Post.objects.order_by('id')
+    post_dict = {'liked_posts': post_list}
     return render(request, 'pet_post_app/browsing_page.html')
 
 
