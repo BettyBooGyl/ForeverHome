@@ -15,15 +15,15 @@
   <body>
     <div class="container container-fluid">
       <div class="row justify-content-center">
-        <div class="pfp-background">
-          <img
-            class="pfp"
-            src="{{request.user.profile_picture.url}}"
-            alt="{{request.user.username}}'s profile picture"
-          />
-        </div>
         <div class="card border-dark w-75">
           <div class="card-header">
+            <center>
+              <img
+                class="pfp"
+                src="{{request.user.profile_picture.url}}"
+                alt="{{request.user.username}}'s profile picture"
+              />
+            </center>
             <h4><center>{{request.user.username}}</center></h4>
           </div>
           <center>
