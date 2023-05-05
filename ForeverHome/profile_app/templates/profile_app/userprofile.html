@@ -15,15 +15,15 @@
   <body>
     <div class="container container-fluid">
       <div class="row justify-content-center">
-        <div class="card border-dark w-75 pfp-card">
+        <div class="pfp-background">
+          <img
+            class="pfp"
+            src="{{request.user.profile_picture.url}}"
+            alt="{{request.user.username}}'s profile picture"
+          />
+        </div>
+        <div class="card border-dark w-75">
           <div class="card-header">
-            <center>
-              <img
-                class="pfp"
-                src="{{request.user.profile_picture.url}}"
-                alt="{{request.user.username}}'s profile picture"
-              />
-            </center>
             <h4><center>{{request.user.username}}</center></h4>
           </div>
           <center>
@@ -34,69 +34,6 @@
           </center>
         </div>
       </div>
-    </div>
-    {%for post in posts%}
-    {%if post.profile_that_posted_pet.userID == user.userID%}
-    <div class="container container-fluid">
-      <div class="row justify-content-center">
-        <div class="card border-dark w-75">
-          <div class="card-body body-bg">
-            <div class="d-flex flex-column pb-3 card-info">
-              <img
-                src="{{post.picture_of_dog}}"
-                class="card-img-top"
-                alt="A picture of {{post.name}}."
-              />
-              <div class="card-info">
-                {% if post.id %}
-                <h4 class="card-title">
-                    <center><b>{{post.name}}</b></a></center>
-                </h4>
-                {%endif%}
-                <div>
-                  <p class="card-text">{{post.description}}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer card-info message-icon">
-              <a href="#">
-                <img
-                  class="post-link-image"
-                  src="{% static 'heart-filled.png'%}"
-                  height="30"
-                />
-              </a>
-              {% if post.profile_that_posted_pet.userID > request.user.userID %}
-              <td>
-                <a
-                  href="{% url 'messages' id1=post.profile_that_posted_pet.userID  id2=request.user.userID%}"
-                >
-                  <img
-                    class="post-link-image"
-                    src="{% static 'orange_message_icon.png'%}"
-                    height="30"
-                  />
-                </a>
-              </td>
-              {% else %}
-              <td>
-                <a
-                  href="{% url 'messages' id1=request.user.userID id2=post.profile_that_posted_pet.userID %}"
-                >
-                  <img
-                    class="post-link-image"
-                    src="{% static 'orange_message_icon.png'%}"
-                    height="30"
-                  />
-                </a>
-              </td>
-              {% endif %}
-            </div>
-        </div>
-      </div>
-      {%endif%}
-      {%endfor%}
     </div>
     {% endblock content %}
   </body>

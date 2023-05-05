@@ -20,32 +20,10 @@ def personalities(request):
     return render(request, 'profile_app/personalities.html')
 
 
-def profile(request, *args, **kwargs):
-    userID = kwargs.get('userID')
-    profile_dict = {}
-    try:
-        profile = Profile.objects.get(pk=userID)
-    except:
-        return HttpResponse('That user doesn\'t exist.')
-
-    if profile:
-        profile_dict['userID'] = profile.userID
-        profile_dict['username'] = profile.username
-        profile_dict['email'] = profile.email
-        profile_dict['profile_picture'] = profile.profile_picture.url
-        profile_dict['posts'] = Post.objects.order_by('id')
-
-    is_self = True
-    user = request.user
-
-    if user.is_authenticated and user != profile:
-        is_self = False
-    elif not user.is_authenticated:
-        is_self = False
-
-    profile_dict['is_self'] = is_self
-
-    return render(request, 'profile_app/userprofile.html', context=profile_dict)
+def profile(request, userID):
+    user = Profile.objects.get(pk=userID)
+    user_dict = {'user': user}
+    return render(request, 'profile_app/userprofile.html', context=user_dict)
 
 
 def sign_up(request, *args, **kwargs):
