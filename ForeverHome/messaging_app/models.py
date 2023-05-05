@@ -7,7 +7,14 @@ class Message(models.Model):
     thread_name = models.CharField(null=True, blank=True, max_length=50)
     message = models.CharField(max_length=500)
     date_and_time_sent = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self) -> str:
+        return self.message
+
+class Notification(models.Model):
+    message = models.ForeignKey('Message', on_delete=models.CASCADE)
+    user = models.ForeignKey('profile_app.Profile', on_delete=models.CASCADE)
     read = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.message
+        return self.user.username
