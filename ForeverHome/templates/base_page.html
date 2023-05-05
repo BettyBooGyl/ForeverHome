@@ -96,10 +96,20 @@
 
     <div class="main">{% block content %} {% endblock content %}</div>
     {% block javascript %}{% endblock %}
-    <footer>
-      <a href="{% url 'about_us' %}"> To the about us </a>
-      <a href="{% url 'personalities' %}"> Personalities descriptions </a>
+  </div>
+  <section class="">
+    <!-- Footer -->
+    <footer class="text-center text-white" id="footer" >
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+          <p class="d-flex justify-content-center align-items-center">
+            <a href="{% url 'about_us' %}"> To the about us </a>
+            <a href="{% url 'personalities' %}"> Personalities descriptions </a>
+          </p>
+      </div>
     </footer>
+  </section>
+</body>
     <script>
       const notify_socket = new WebSocket(
         "ws://" + window.location.host + "/ws/" + "notify/"
