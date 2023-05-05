@@ -77,8 +77,83 @@ footer {
 </head>
 <body>
 
-
-
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <a class="navbar-brand mt-2 mt-lg-0" href="#">
+          <img
+            src="{% static 'profile_app/logo.png'%}"
+            height="55"
+            alt="FureverHome Logo"
+            loading="lazy"
+          />
+        </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'search' %}">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'liked_posts' %}">Liked Posts</a>
+          </li>
+        </ul>
+      </div>
+      {% if request.user.is_authenticated %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {%if user.userID > request.user.userID %}
+        <li class="nav-item">
+          <div class="notification">
+            <a
+              class="nav-link"
+              id="notification-read"
+              href="{% url 'messages' id1=user.userID id2=request.user.userID %}"
+              >Messages</a
+            >
+            <p id="count_badge">1</p>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <div class="notification">
+            <a
+              class="nav-link"
+              id="notification-read"
+              href="{% url 'messages' id1=request.user.userID id2=user.userID%}"
+              >Messages</a
+            >
+            <p id="notification-read ">1</p>
+          </div>
+        </li>
+        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'sign_out' %}"> Sign out</a>
+        </li>
+        <li>
+          <a href="{% url 'userprofile' userID=user.userID%}"
+            ><img
+              src="{{request.user.profile_picture.url}}"
+              class="rounded-circle"
+              height="45"
+              alt="Profile Picture"
+              loading="lazy"
+          /></a>
+        </li>
+      </ul>
+      {% else %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'sign_in' %}">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'sign_up' %}">Sign up</a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </nav>
+  
 <header>
   <h2>About us</h2>
 </header>
