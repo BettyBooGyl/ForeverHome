@@ -1,10 +1,15 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>CSS Template</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends 'base_page.html' %}
+{% load static %}
+
+{% block title %}Messages{% endblock %}
+
+{% block css %}
+{% endblock %}
+{% block javascript %}
+{% endblock %}
+
+{% block content %}
 <style>
 * {
   box-sizing: border-box;
@@ -117,12 +122,6 @@ footer {
       </article>
 </section>
 
-<footer>
-  <p>Footer</p>
-</footer>
-
-</body>
-</html>
 
 
     <style>
@@ -252,8 +251,4 @@ footer {
             <div style="color: #595959;font-size: 14px;font-family: Arial;padding-top:16px;">
             These terms of use were created using Termly's <a style="color: rgb(48, 48, 241) !important;" href="https://termly.io/products/terms-and-conditions-generator/">Terms and Conditions Generator</a>.
             </div>
-</head>
-<body>
-    
-</body>
-</html>
+{% endblock %}
