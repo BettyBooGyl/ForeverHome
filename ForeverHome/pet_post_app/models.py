@@ -1,7 +1,7 @@
 from django.db import models
 
 PERSONALITY_CHOICES = [
-    ("COUCH_POTATOE", "Couch potatoe"),
+    ("COUCH_POTATO", "Couch potato"),
     ("ENERGETIC", "Energetic"),
     ("SOCIABLE", "Sociable"),
     ("CUDDLY", "Cuddly"),
@@ -12,6 +12,7 @@ SIZE_CHOICES = [
     ("SM", "Small"),
     ("MD", "Medium"),
     ("LG", "Large"),
+    ("XL", "X-Large"),
 ]
 def get_profile_image_filepath(self, filename):
     return f'static/pet_post_app/post_pictures/{self.pk}/{"pet_picture.png"}'

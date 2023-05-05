@@ -1,12 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%extends 'base_page.html'%} {% block content %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <title>Liked</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h1><center>Liked Posts Page</center></h1>
+    {%for post in request.user.liked_posts.all %}
+    <div class="container container-fluid">
+      <div class="row justify-content-center">
+        <div class="card border-dark">
+          <div class="card-body body-bg">
+            <div class="d-flex flex-column pb-3 card-info">
+              <img
+                src="{{post.picture_of_dog}}"
+                class="card-img-top"
+                alt="A picture of {{post.name}}."
+              />
+              <div class="card-info">
+                {% if post.id %}
+                <h4 class="card-title">
+                    <center><b>{{post.name}}</b></a></center>
+                </h4>
+                {%endif%}
+                <div>
+                  <p class="card-text">{{post.description}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer card-info message-icon">
+              <a href="#">
+                <img
+                  class="post-link-image"
+                  src="{% static 'heart-filled.png'%}"
+                  height="30"
+                />
+              </a>
+              {% if post.profile_that_posted_pet.userID > request.user.userID %}
+              <td>
+                <a
+                  href="{% url 'messages' id1=post.profile_that_posted_pet.userID  id2=request.user.userID%}"
+                >
+                  <img
+                    class="post-link-image"
+                    src="{% static 'orange_message_icon.png'%}"
+                    height="30"
+                  />
+                </a>
+              </td>
+              {% else %}
+              <td>
+                <a
+                  href="{% url 'messages' id1=request.user.userID id2=post.profile_that_posted_pet.userID %}"
+                >
+                  <img
+                    class="post-link-image"
+                    src="{% static 'orange_message_icon.png'%}"
+                    height="30"
+                  />
+                </a>
+              </td>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% comment %}
+      <div class="card-columns">
+        <div class="card" style="width: 20rem">
+          <img
+            src="{{post.picture_of_dog}}"
+            class="card-img-top"
+            alt="A picture of {{post.name}}."
+          />
+          <div class="card-body">
+            <h5 class="card-title"><u>{{post.name}}</u></h5>
+            <div>
+              <p class="card-text">{{post.description}}</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="#">
+              <div id="heart">
+                <img src="{% static 'heart-filled.png'%}" height="30" />
+              </div>
+            </a>
+            {% if post.profile_that_posted_pet.userID > request.user.userID %}
+            <td>
+              <a
+                href="{% url 'messages' id1=post.profile_that_posted_pet.userID  id2=request.user.userID%}"
+                ><div id="message-icon"></div>
+              </a>
+            </td>
+            {% else %}
+            <td>
+              <a
+                href="{% url 'messages' id1=request.user.userID id2=post.profile_that_posted_pet.userID %}"
+                ><div id="message-icon"></div>
+              </a>
+            </td>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endcomment %}
+    </div>
+    {%endfor%} {% endblock content %}
+  </body>
 </html>

@@ -1,13 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {%extends 'base_page.html'%} {% block content %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link
+      rel="stylesheet"
+      href="{% static 'profile_app/css/user_profile_styles.css' %}"
+    />
     <title>Profile</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="container container-fluid">
+      <div class="row justify-content-center">
+        <div class="pfp-background">
+          <img
+            class="pfp"
+            src="{{request.user.profile_picture.url}}"
+            alt="{{request.user.username}}'s profile picture"
+          />
+        </div>
+        <div class="card border-dark w-75">
+          <div class="card-header">
+            <h4><center>{{request.user.username}}</center></h4>
+          </div>
+          <center>
+            <div class="card-body body-bg">
+              <h5>Date Joined: {{request.user.date_joined}}</h5>
+              <h5>My Location: {{request.user.location}}</h5>
+            </div>
+          </center>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+  </body>
 </html>
