@@ -97,8 +97,8 @@
     <div class="main">{% block content %} {% endblock content %}</div>
     {% block javascript %}{% endblock %}
     <footer>
-      <a href="{% url 'about_us' %}"> To the about us </a>
-      <a href="{% url 'personalities' %}"> Personalities descriptions </a>
+        <a href="{% url 'about_us' %}">About Us</a>
+        <a href ="{% url 'personalities' %}"> Personalities descriptions </a>
     </footer>
     <script>
       const notify_socket = new WebSocket(

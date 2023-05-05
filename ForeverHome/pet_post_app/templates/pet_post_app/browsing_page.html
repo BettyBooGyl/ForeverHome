@@ -1,12 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search</title>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends 'base_page.html' %}
+{% load static %}
+{% block content %}
+<main class="container my-4">
+	<div class="row">
+		<!-- Filters -->
+		<div class="col-md-3">
+			{% include 'filters.html' %}
+		</div>
+		<div class="col-md-9">
+			<!-- Pets -->
+			
+			<div class="row" id="filteredPets">
+				{% for pet in data %}
+				<div class="col-lg-4 col-md-6 mb-4 pet-box">
+					<div class="card shadow">
+					  <a href="/pet/{{pet.slug}}/{{pet.id}}"><img src="/media/{{pet.petattribute_set.first.image}}" class="card-img-top" alt="{{pet.title}}"></a>
+					  <div class="card-body">
+					    <h5 class="card-text"><a href="/pet/{{pet.slug}}/{{pet.id}}">{{pet.title}}</a></h5>
+					    <h6>$ <span class="pet-price-{{pet.id}}">{{pet.petattribute_set.first.price}}</span></h6>
+					  </div>
+					  	<div class="card-footer">
+				          <input type="hidden" value="1" class="form-control pet-qty-{{pet.id}}" id="productQty" />
+				          <input type="hidden" class="pet-image-{{pet.id}}" value="{{pet.petattribute_set.first.image}}" />
+				          <input type="hidden" class="pet-id-{{pet.id}}" value="{{pet.id}}" />
+				          <input type="hidden" class="pet-title-{{pet.id}}" value="{{pet.title}}" />
+							  	
+							  	<span class="float-right">
+							  		put name here
+							  	</span>
+					  	</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %}
