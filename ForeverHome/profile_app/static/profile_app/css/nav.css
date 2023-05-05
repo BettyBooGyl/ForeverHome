@@ -1,3 +1,4 @@
+
 .navbar{
   background-color: #C0E89B;
 }
@@ -8,27 +9,4 @@
 }
 .navbar a:hover{
   color: #DB8330;
-}
-
-#footer{
-  background-color: #8E71A6;
-}
-#footer a{
-  padding-left:0.5em;
-  padding-right:0.5em;
-  color: #1d0035;
-}
-
-
-#footer {
-  position: fixed !important; 
-  bottom: 0 !important;
-  width: 100% !important;
-  height: 5rem !important;            /* Footer height */
-}
-#count_badge{
-  color:#DB8330;
-}
-#pageContent{
-  margin-bottom: 5rem;
 }
