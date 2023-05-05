@@ -1,12 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Post</title>
-</head>
-<body>
-    
+
+{% extends 'base_page.html' %}
+{% load static %}
+
+{% block title %}New Post{% endblock %}
+
+{% block css %}<link rel="stylesheet" href='{% static "css/forms.css" %}'>{% endblock %}
+
+
+ 
+
+{% block content %}
+<div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="card card createpost">
+                <div class="card-body">
+                    <form class="form-createpost" method="post">{% csrf_token %}
+                            <div class="d-flex flex-column pb-3">
+                                <img class="img-fluid mx-auto d-block" src="{% static 'profile_app/logo.png'%}" alt="logo" width="72" height="72">
+                            </div>
+                            <input type="name" name="name" id="inputName" class="form-control" placeholder="Name" required>
+                            <input type="breed" name="breed" id="inputBreed" class="form-control" placeholder="Breed" required>
+                            <input type="number" min="0" name="age" id="inputAge" class="form-control" placeholder="Age" required>
+                            <fieldset>
+                                <body>Choose the personalities that best match your pet.</body>
+                                <div>
+                                    <input type="checkbox" id="couch-potato" name="couch-potato" value="couch-potato">Couch Potato<br>
+                                    <input type="checkbox" id="energetic" name="energetic" value="energetic">Energetic<br> 
+                                    <input type="checkbox" id="sociable" name="sociable" value="sociable">Sociable<br>
+                                    <input type="checkbox" id="cuddly" name="cuddly" value="cuddly">Cuddly<br>
+                                    <input type="checkbox" id="playful" name="playful" value="playful">Playful<br>
+                                    <input type="checkbox" id="protective" name="protective" value="protective">Protective<br>
+                                </div>
+                            </fieldset>
+                            <body>Size</body>
+                            <select type="size" name="size" id="inputSize" class="form-control" required>
+                                <option value="invalid"></option>
+                                <option value="sm">Small (<25lbs)</option>
+                                <option value="md">Medium (25-55 lbs)</option>
+                                <option value="lg">Large (55-90 lbs)</option>
+                                <option value="xl">X-Large (>90 lbs)</option>
+                            </select><br>
+                            <input type="description" name="description" id="inputDescription" class="form-control" placeholder="Describe your pet" required>
+                            <body>Good with other pets</body><br>
+                            <label class="switch">
+                                <input type="checkbox" name="good_with_pets" id="inputGoodWithPets" class="form-control">
+                                <span class="slider round"></span>
+                            </label><br>
+                            <body>Good with kids</body><br>
+                            <label class="switch">
+                                <input type="checkbox" name="good_with_kids" id="inputGoodWithKids" class="form-control">
+                                <span class="slider round"></span>
+                            </label>
+                            <input type="problems_and_disabilities" name="problems_and_disabilities" id="problems_and_disabilities" class="form-control" placeholder="Please provide a description of any problems or disabilities your pet has">
+                            <body>Add a picture of your pet</body>
+                            <input type="file" name="picture_of_dog" id="picture_of_dog" class="form-control">
+                            {% for field in registration_form %}
+                            <p>
+                                {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                            {% endfor %}
+                            </p>
+                            {% endfor %}
+                            {% if registartion_form.non_field_errors %}
+                            <div style="color:red">
+                                <p>{{registration_form.non_field_errors}}</p>
+                            </div>
+                            {% endif %}
+                            <button class ="btn btn-lg btn-primary btn-block" type="submit">Create Post</button>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% endblock content %}
+
 </body>
+
 </html>
