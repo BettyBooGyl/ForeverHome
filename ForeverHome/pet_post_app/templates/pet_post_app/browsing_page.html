@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <<<<<<< Updated upstream
@@ -87,3 +88,44 @@
   </body>
 </html>
 >>>>>>> Stashed changes
+=======
+{% extends 'base_page.html' %}
+{% load static %}
+{% block content %}
+<main class="container my-4">
+	<div class="row">
+		<!-- Filters -->
+		<div class="col-md-3">
+			{% include 'filters.html' %}
+		</div>
+		<div class="col-md-9">
+			<!-- Pets -->
+			
+			<div class="row" id="filteredPets">
+				{% for pet in data %}
+				<div class="col-lg-4 col-md-6 mb-4 pet-box">
+					<div class="card shadow">
+					  <a href="/pet/{{pet.slug}}/{{pet.id}}"><img src="/media/{{pet.petattribute_set.first.image}}" class="card-img-top" alt="{{pet.title}}"></a>
+					  <div class="card-body">
+					    <h5 class="card-text"><a href="/pet/{{pet.slug}}/{{pet.id}}">{{pet.title}}</a></h5>
+					    <h6>$ <span class="pet-price-{{pet.id}}">{{pet.petattribute_set.first.price}}</span></h6>
+					  </div>
+					  	<div class="card-footer">
+				          <input type="hidden" value="1" class="form-control pet-qty-{{pet.id}}" id="productQty" />
+				          <input type="hidden" class="pet-image-{{pet.id}}" value="{{pet.petattribute_set.first.image}}" />
+				          <input type="hidden" class="pet-id-{{pet.id}}" value="{{pet.id}}" />
+				          <input type="hidden" class="pet-title-{{pet.id}}" value="{{pet.title}}" />
+							  	
+							  	<span class="float-right">
+							  		put name here
+							  	</span>
+					  	</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</main>
+{% endblock %}
+>>>>>>> ea231610e1736cd6c8ab0d7b21f221d00a793d81
