@@ -1,0 +1,80 @@
+.card{
+    background-color: #d6d4d4 !important;
+  }
+  .card-createpost {
+    width: 100%;
+    padding: 15px;
+    margin: auto;
+  }
+  .form-createpost input {
+    border-radius: 10px 10px 10px 10px ;
+    margin-bottom: 10px;
+  
+  }
+  .btn-primary {
+    background-color: #DB8330!important;
+    border-color:#a86d35!important;
+  }
+  .btn-primary:hover {
+    background-color: #362A21!important;
+    border: color #362a21 !important;
+  }
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 17px;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #b8b1b1;
+    -webkit-transition: .2s;
+    transition: .2s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    -webkit-transition: .2s;
+    transition: .2s;
+  }
+  
+  input:checked + .slider {
+    background-color: #DB8330;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #DB8330;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(13px);
+    -ms-transform: translateX(13px);
+    transform: translateX(13px);
+  }
+  
+  .slider.round {
+    border-radius: 17px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  } 

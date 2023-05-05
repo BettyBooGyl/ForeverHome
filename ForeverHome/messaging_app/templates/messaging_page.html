@@ -26,7 +26,7 @@
         <div class="row chat-top">
             <div class="col-sm-4 border-right border-secondary">
                 <img src="{{request.user.profile_picture.url}}" height="35" alt="" class="profile-image rounded-circle">
-                <span class="ml-2">{{request.user.username}}</span>
+                <span class="ml-2">{{request.user.username}}</span><span id="count_badge">1</span>
                 <span class="float-right mt-2">
                     <div class="notification">
                         <i class="fa fa-bell-o" aria-hidden="true"></i>
@@ -187,6 +187,7 @@
 
     socket.onmessage = function(e){
         const data = JSON.parse(e.data);
+        console.log(e.data);
         
         if(data.username == message_username){
             document.querySelector('#chat-body').innerHTML += 
@@ -219,9 +220,12 @@
         socket.send(JSON.stringify({
             'message':message,
             'username':message_username,
+            'receiver':receiver,
         }));
         message_input.value = '';
     };
+
 </script>
+
 
 {% endblock %}

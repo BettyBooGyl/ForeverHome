@@ -41,38 +41,33 @@
           </ul>
         </div>
         {% if request.user.is_authenticated %}
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          {%if user.userID > request.user.userID %}
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="{% url 'messages' id1=user.userID id2=request.user.userID%}"
-              >Messages</a
-            >
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a
-              class="nav-link"
-              href="{% url 'messages' id1=request.user.userID id2=user.userID%}"
-              >Messages</a
-            >
-          </li>
-          {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'sign_out' %}"> Sign out</a>
-          </li>
-          <li>
-            <a href="{% url 'userprofile'%}"
-              ><img
-                src="{{request.user.profile_picture.url}}"
-                class="rounded-circle"
-                height="45"
-                alt="Profile Picture"
-                loading="lazy"
-            /></a>
-          </li>
-        </ul>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {%if    user.userID > request.user.userID %}
+                <li class="nav-item">
+                    <div class="notification">
+                      <a class="nav-link" id="notification-read"  href="{% url 'messages' id1=user.userID id2=request.user.userID %}">Messages</a><p id="count_badge">1</p>
+                    </div>
+                  </li>
+              {% else %}
+                <li class="nav-item">
+                    <div class="notification">
+                      <a class="nav-link" id="notification-read" href="{% url 'messages' id1=request.user.userID id2=user.userID%}">Messages</a><p id="notification-read "> 1 </p>
+                    </div>
+                </li>
+              {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sign_out' %}"> Sign out</a>
+                </li>
+                <li>
+                    <a href="{% url 'userprofile'%}"><img
+                        src="{{request.user.profile_picture.url}}"
+                        class="rounded-circle"
+                        height="45"
+                        alt="Profile Picture"
+                        loading="lazy"/></a>
+                </li>
+                
+            </ul>
         {% else %}
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
@@ -92,5 +87,39 @@
       <a href="{% url 'about_us' %}"> To the about us </a>
       <a href="{% url 'personalities' %}"> Personalities descriptions </a>
     </footer>
+  <script>
+    const notify_socket = new WebSocket(
+      'ws://'
+      + window.location.host
+      + '/ws/'
+      +'notify/'
+  )
+  
+  notify_socket.onopen = function(e){
+      console.log("CONNECTED TO NOTIFICATION");
+  }
+  
+  var count_badge = document.getElementById('count_badge')
+  
+  notify_socket.onmessage = function(e){
+      console.log(e);
+      console.log("This is for the notification");
+      const data = JSON.parse(e.data);
+      console.log(data);
+      count_badge.innerHTML = data.count;
+  }
+  
+  notify_socket.onclose = function(e){
+      console.log("DISCONNECTED FROM NOTIFICATION");
+  }
+
+  // document.querySelector('#notification-read').onclick = function(e){
+  //       console.log("got to the erasing")
+  //       const notifications = Notification.objects.all(user = request.user);
+  //       for(notification in notifications){
+  //         notification.
+  //       }
+  //   };
+  </script>
   </body>
 </html>
