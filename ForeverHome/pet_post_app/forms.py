@@ -1,6 +1,6 @@
 from django import forms
 
-from pet_post_app.models import Post
+from pet_post_app.models import POST
 class PostForm():
     picture_of_dog = forms.ImageField()
     name = forms.CharField()
@@ -14,6 +14,6 @@ class PostForm():
     problems_and_disabilities = forms.CharField()
 
     class Meta:
-        model = Post
-        fields = ('picture_of_dog', 'name', 'breed', 'age', 'personality', 
+        model = POST
+        fields('picture_of_dog', 'name', 'breed', 'age', 'personality', 
                'size', 'description','good_with_pets','good_with_kids','problems_and_disabilities')
