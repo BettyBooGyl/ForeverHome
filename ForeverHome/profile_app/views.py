@@ -8,7 +8,8 @@ from profile_app.forms import RegistrationForm, AccountAuthenticationForm
 
 
 def home_page(request):
-    return render(request, 'profile_app/index.html')
+    posts = Post.objects.all()
+    return render(request, 'profile_app/index.html', context={'posts': posts})
 
 
 def about_us(request):

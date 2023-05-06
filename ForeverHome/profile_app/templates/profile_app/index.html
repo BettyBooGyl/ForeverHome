@@ -1,22 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+{%extends 'base_page.html'%}
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 </head>
+{% block content %}
 
   <body>
-    {%extends 'base_page.html'%}
-    {% block content %}
-
-    <h1>This is the index</h1>
-
+    <img src="{% static 'profile_app/header1.png'%}" alt="Furever Home's Header" width=100%, height=400px/>
+    <h1><center>Welcome to Furever Home!</center></h1>
+    <p><center>Here at Furever Home we do our best to ensure all 
+      animals go to a loving home. Feel free to look around but here's some we think you'll enjoy to get you started</p></center>
+    {%for post in posts%}
+    {%if post.id > 16%}
+    {%if post.id < 20%}
+    <div class="container container-fluid">
+      <div class="row justify-content-center">
+        <div class="card border-dark">
+          <div class="card-body body-bg">
+            <div class="d-flex flex-column pb-3 card-info">
+              <img
+                src="{{post.picture_of_dog}}"
+                class="card-img-top"
+                alt="A picture of {{post.name}}."
+                width=50%
+              />
+              <div class="card-info">
+                {% if post.id %}
+                <h4 class="card-title">
+                    <center><b>{{post.name}}</b></a></center>
+                </h4>
+                {%endif%}
+                <div>
+                  <p class="card-text">{{post.description}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {%endif%}
+    {%endif%}
+    </div>
+    {%endfor%}
     {% endblock content %}
-    {% load static %}
-    
 </body>
 
 </html>
