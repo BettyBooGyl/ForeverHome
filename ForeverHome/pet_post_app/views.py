@@ -3,9 +3,8 @@ from pet_post_app.models import Post
 from django.http import JsonResponse,HttpResponse
 
 def search(request):
-    post_list = Post.objects.order_by('id')
-    post_dict = {'liked_posts': post_list}
-    return render(request, 'pet_post_app/browsing_page.html')
+    posts = Post.objects.all()
+    return render(request, 'pet_post_app/browsing_page.html', context={"posts": posts})
 
 
 def create_new_post_page(request):
